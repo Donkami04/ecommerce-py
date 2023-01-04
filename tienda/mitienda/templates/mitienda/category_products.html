@@ -2,7 +2,9 @@
 
 {% for product in products %}
     <ul>
-        <li>{{product.name}}</li>
+        <li>{{product.name}} <a style="margin-left:100px; text-decoration: none" href="{% url 'mitienda:delete_product_confirmation' product.id %}">❌</a> <a style="text-decoration: none"href="">🔁</a></li>
         <li>${{product.price}}</li>
+        <p> =========================== </p>
     </ul>
 {% endfor %}
+
