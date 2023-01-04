@@ -7,5 +7,6 @@ app_name = "mitienda"
 urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('categories/<int:category_id>/', views.category_products, name='category_products'),
+    path('products/new/', views.create_product, name='create_product'),
     
 ]
