@@ -128,5 +128,5 @@ MEDIA_URL = '/media-files/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'mitienda:categories'
+LOGIN_REDIRECT_URL = 'mitienda:home'
 

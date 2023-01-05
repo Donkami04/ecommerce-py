@@ -7,9 +7,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 
-def categories(request):
+def home(request):
     categories = Category.objects.all()
-    return render(request, 'mitienda/categories.html', {'categories': categories})
+    return render(request, 'mitienda/base.html', {'categories': categories})
 
 def category_products(request, category_id):
     category = Category.objects.get(id=category_id)
@@ -58,7 +58,7 @@ def register(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'El usuario {username} ha sido registrado.')
-            return redirect('mitienda:categories')
+            return redirect('mitienda:home')
             #return render(request, 'mitienda/categories')    
     else:
         form = UserRegistrationForm()

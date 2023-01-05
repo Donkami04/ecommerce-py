@@ -12,7 +12,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='mitienda/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='mitienda/logout.html'), name='logout'),
     
-    path('categories/', views.categories, name='categories'),
+    path('home/', views.home, name='home'),
     path('categories/<int:category_id>/', views.category_products, name='category_products'),
     path('products/new/', views.create_product, name='create_product'),
     path('products/modify/<int:product_id>/', views.modify_product, name='modify_product'),
