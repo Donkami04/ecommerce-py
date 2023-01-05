@@ -1,3 +1,3 @@
-<h1 style="font-family: arial"> Esta seguro que desea eliminar el producto <strong style="color:red">{{product.name}}</strong>?!</h1>
+<h1 style="font-family: arial">¿Está seguro que desea eliminar el producto <strong style="color:red">{{product.name}}</strong>?</h1>
 <button style="background: red; width: 75px"> <a style="text-decoration: none; color:white" href="{% url 'mitienda:delete_product' product.id %}">SI</a> </button>
 <button style="background: green"> <a style="text-decoration: none; color:white" href="{% url 'mitienda:category_products' product.category.id %}"> Cancelar </button>

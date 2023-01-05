@@ -1,0 +1,6 @@
+<h2>Actualizar producto</h2>
+<form action={% url 'mitienda:update_product' product.id %} method="post" enctype="multipart/form-data" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">  Guardar cambios</button>
+</form>

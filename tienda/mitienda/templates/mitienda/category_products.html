@@ -1,10 +1,18 @@
-<h1>Productos de la categoria {{category.name}}</h1>
+<h1><a style="text-decoration: none; color: green" href="{% url 'mitienda:categories' %}">Mi Tienda 🈴</a>  {{category.name}}</h1>
 
 {% for product in products %}
     <ul>
-        <li>{{product.name}} <a style="margin-left:100px; text-decoration: none" href="{% url 'mitienda:delete_product_confirmation' product.id %}">❌</a> <a style="text-decoration: none"href="">🔁</a></li>
+        <li>{{product.name}} 
+            <a style="margin-left:100px; text-decoration: none" href="{% url 'mitienda:delete_product_confirmation' product.id %}">❌</a> 
+            <a style="text-decoration: none"href="{% url 'mitienda:modify_product' product.id %}">🔁</a></li>
         <li>${{product.price}}</li>
+        {% if product.image %}
+        <li><img src="{{ product.image.url }}" width="100" height="100" alt=""></li>
+        {% else %}
+            <li>No imagen</li>
+        {% endif %}
         <p> =========================== </p>
     </ul>
 {% endfor %}
 
+<a href="{% url 'mitienda:create_product' %}"><button>Crear producto</button></a>

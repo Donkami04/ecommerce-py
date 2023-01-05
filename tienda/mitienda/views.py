@@ -15,10 +15,10 @@ def category_products(request, category_id):
 
 def create_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect(reverse('mitienda:category_products', args=request.POST['category']))
-
     else:
         form = ProductForm()
     return render(request, 'mitienda/create_product.html', {'form': form})
@@ -35,4 +35,17 @@ def delete_product(request, product_id):
     return render(request, 'mitienda/removed.html', {'product': object})
 
 def modify_product(request, product_id):
-    pass
+    product = Product.objects.get(id=product_id)
+    form = ProductForm(instance=product)
+    return render(request, 'mitienda/modify_product.html', {'form': form, 'product': product})
+    
+def update_product(request, product_id):  
+    if request.method == 'POST':
+        product = Product.objects.get(id=product_id)
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('mitienda:category_products', args=request.POST['category']))
+        else:
+            form = ProductForm(instance=product)
+            return render(request,'mitienda/modify_product.html', {'form':form})
