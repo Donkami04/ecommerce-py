@@ -1,2 +1,6 @@
 <h3> El producto {{product.name}} fue eliminado con exito</h3>
 <p><a href="{% url 'mitienda:category_products' product.category.id %}">Seguir viendo productos </a> </p>
+
+{% if request.user.is_authenticated %}
+  <p><a style="text-decoration: none; background: #ff7d73; font-family: monospace" href="{% url 'mitienda:logout' %}">Logout</a></p>
+{% endif %}

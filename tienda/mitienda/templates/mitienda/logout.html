@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+  <h1><a style="text-decoration: none; color: green; font-size: 60px; font-family: arial; margin-right: 490px; margin-bottom: 400px" href="{% url 'mitienda:categories' %}">Mi Tienda 🈴</a></h1>
+    <p style='text-align: center; font-family: arial; font-size: 20px' class='login'>Has cerrado sesion</p>
+    <p> <a style="text-decoration: none; font-size: 28px; font-family: arial; margin-right: 850px; margin-bottom: 200px" href="{% url 'mitienda:register' %}">Register</a></p>
+    <p> <a style="text-decoration: none; font-size: 28px; font-family: arial; margin-right: 400px; margin-bottom: 200px" href="{% url 'mitienda:login' %}">Login</a></p>
+
+</body>
+</html>
+
+
+  {% comment %} <h2>Registrate</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Crear">
+  </form> {% endcomment %}

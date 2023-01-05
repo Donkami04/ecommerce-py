@@ -1,10 +1,17 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView 
+
+from. import views
 
 from . import views
 
 app_name = "mitienda"
 
 urlpatterns = [
+    path('register/', views.register, name='register'),
+    path('login/', LoginView.as_view(template_name='mitienda/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='mitienda/logout.html'), name='logout'),
+    
     path('categories/', views.categories, name='categories'),
     path('categories/<int:category_id>/', views.category_products, name='category_products'),
     path('products/new/', views.create_product, name='create_product'),

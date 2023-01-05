@@ -4,3 +4,7 @@
   {{ form.as_p }}
   <button type="submit">  Guardar cambios</button>
 </form>
+
+{% if request.user.is_authenticated %}
+  <p><a style="text-decoration: none; background: #ff7d73; font-family: monospace" href="{% url 'mitienda:logout' %}">Logout</a></p>
+{% endif %}

@@ -16,3 +16,12 @@
 {% endfor %}
 
 <a href="{% url 'mitienda:create_product' %}"><button>Crear producto</button></a>
+
+{% if request.user.is_authenticated %}
+    <p><a style="text-decoration: none; background: #ff7d73; font-family: arial" href="{% url 'mitienda:logout' %}">Logout</a></p>
+{% else %}
+    <p><a style="text-decoration: none; background: #6fff4c; font-family: arial" href="{% url 'mitienda:login' %}">Login</a></p>
+    <p><a style="text-decoration: none; background: #6fff4c; font-family: arial" href="{% url 'mitienda:register' %}">Register</a></p>
+{% endif %}
+
+

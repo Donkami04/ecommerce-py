@@ -1,8 +1,11 @@
 from mitienda.models import Category, Product
-from mitienda.forms import ProductForm
+from mitienda.forms import ProductForm, UserRegistrationForm
 
 from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
 
 def categories(request):
     categories = Category.objects.all()
@@ -29,8 +32,6 @@ def delete_product_confirmation(request, product_id):
 
 def delete_product(request, product_id):
     object = Product.objects.get(id=product_id)
-    object_category = object.category.id
-    print('XXXXXXXXXXXXXXXXXXXX ================>',object_category)
     object.delete()
     return render(request, 'mitienda/removed.html', {'product': object})
 
@@ -49,3 +50,17 @@ def update_product(request, product_id):
         else:
             form = ProductForm(instance=product)
             return render(request,'mitienda/modify_product.html', {'form':form})
+        
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            messages.success(request, f'El usuario {username} ha sido registrado.')
+            return redirect('mitienda:categories')
+            #return render(request, 'mitienda/categories')    
+    else:
+        form = UserRegistrationForm()
+        
+    return render(request,'mitienda/register.html', {'form': form})
