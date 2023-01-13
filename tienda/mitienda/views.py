@@ -1,10 +1,8 @@
 from mitienda.models import Category, Product
 from mitienda.forms import ProductForm, UserRegistrationForm
 
-from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
 
 
 def home(request):
@@ -56,8 +54,8 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
-            messages.success(request, f'El usuario {username} ha sido registrado.')
+            # username = form.cleaned_data['username']
+            # messages.success(request, f'El usuario {username} ha sido registrado.')
             return redirect('mitienda:home')
             #return render(request, 'mitienda/categories')    
     else:
